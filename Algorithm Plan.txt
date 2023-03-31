@@ -1,0 +1,8 @@
+Binary search scenario:
+
+	The problem: So one of our employees assigned someone a storage unit about a month ago. 
+	The customer has never seen this storage unit, since he hired someone to store the items for them,
+	Normally they would have a unit number, but all they have is the ID of the storage unit.
+	You as the employee know that the units are in numberical order, but don't have information on exactly where the unit is.
+	Another problem is that the company has 2,000 units, so searching these 1 by 1 could take days... Luckily for us, were programmers.
+	Lets see how a binary search can solve this problem!
