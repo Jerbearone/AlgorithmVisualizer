@@ -1,0 +1,27 @@
+header {
+    margin: .5rem;
+}
+
+.shape{
+    height:1.5rem;
+    width:1.5rem;
+    margin: .1rem;
+    background-color: #0000FF;
+
+}
+#animationSection{
+    padding: 8rem;
+    display:flex;
+    flex-direction: row;
+
+
+}
+
+#binarySearchSection{
+    display:flex;
+    -ms-flex-align: stretch;
+}
+
+body {
+    background-color: aliceblue;
+}
