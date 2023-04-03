@@ -1,4 +1,4 @@
-import anime from '/node_modules/animejs/lib/anime.es.js';
+import anime from './node_modules/animejs/lib/anime.es.js';
 
 //myAnimation = document.getElementById("algorithmAnimation");
 let itemNumber = 120;
