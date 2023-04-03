@@ -1,25 +1,45 @@
 header {
+    display:flex;
+    align-items: center;
+    justify-content: center;
     margin: .5rem;
 }
 
 .shape{
-    height:1.5rem;
-    width:1.5rem;
+    height:.8rem;
+    width:.8rem;
     margin: .1rem;
     background-color: #0000FF;
 
 }
 #animationSection{
-    padding: 8rem;
+    padding: 3rem;
     display:flex;
     flex-direction: row;
 
 
 }
 
+
+
 #binarySearchSection{
     display:flex;
     -ms-flex-align: stretch;
+}
+
+#randomValueId{
+    display: flex;
+    flex-direction: row;
+}
+
+#elementIdSection{
+    display:flex;
+    flex-direction: row;
+}
+
+#elementIdHover{
+    display: flex;
+    padding-top: .3rem;
 }
 
 body {
