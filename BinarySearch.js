@@ -23,30 +23,13 @@ let setupAnimation = function() {
     console.log(animator);
 }
 
-let moveDown = function() {
+let moveAllDown = function() {
     addMoveDownValue();
     animator.add({
         targets: '.shape',
         translateY: yTralsationValue,
         duration: 1200,
     })
-}
-
-
-
-let getMiddleId = function() {
-    let shapeSize = document.getElementsByClassName('shape').length;
-    //get the middle item in the array
-    let middleIndex = null;
-    if (shapeSize % 2 == 0) {
-        middleIndex = shapeSize/2;
-    } else {
-        middleIndex = (shapeSize +1)/2;
-    }
-    console.log(document.getElementsByClassName('shape')[middleIndex].id);
-
-    return document.getElementsByClassName('shape')[middleIndex].id;
-    
 }
 
 let moveSingleShapeDown = function(IdOfElement) {
@@ -60,7 +43,7 @@ let moveSingleShapeDown = function(IdOfElement) {
 }
 
 
-let compareSingleShape = function(IdOfElement) {
+let bringShapeToCurrentYValue = function(IdOfElement) {
     console.log(IdOfElement);
 
     animator.add({
@@ -110,7 +93,7 @@ let binarySearch = function() {
             middleId = shapeArray[middleIndex].id
             console.log(middleId);
             //yTralsationValue +=20
-            compareSingleShape;
+            bringShapeToCurrentYValue;
             //moveSingleShapeDown(middleId);
             matchFound = true;
             console.log("found the correct index")
@@ -125,8 +108,8 @@ let binarySearch = function() {
                 highIndex -=1;
             }
             middleIndex = ((lowIndex + highIndex) / 2) ;
-            //compareSingleShape(shapeArray[lowIndex].id);
-            compareSingleShape(shapeArray[middleIndex].id);
+            //bringShapeToCurrentYValue(shapeArray[lowIndex].id);
+            bringShapeToCurrentYValue(shapeArray[middleIndex].id);
             addMoveDownValue();
             console.log("random number greater than middle index: " + lowIndex + " " + middleIndex + " " + highIndex);
         }else if (randomNumber < middleIndex) {
@@ -139,8 +122,8 @@ let binarySearch = function() {
                 highIndex -=1;
             }
             middleIndex = ((lowIndex + highIndex) /2) ;
-            //compareSingleShape(shapeArray[highIndex].id);
-            compareSingleShape(shapeArray[middleIndex].id);
+            //bringShapeToCurrentYValue(shapeArray[highIndex].id);
+            bringShapeToCurrentYValue(shapeArray[middleIndex].id);
             //make y value go down so you can visually see steps
             addMoveDownValue();
             console.log(" random number less than mid index: " + lowIndex + " " + middleIndex + " " + highIndex);

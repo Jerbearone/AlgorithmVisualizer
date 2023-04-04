@@ -1,3 +1,6 @@
+/*colors: Dark : 03045E 023E8A 0077B6 0096C7 00B4D8 48CAE4 90E0EF ADE8F4 CAF0F8 Light */
+
+
 header {
     display:flex;
     align-items: center;
@@ -6,9 +9,9 @@ header {
 
 .shape{
     height:.5rem;
-    width:.8rem;
+    width:.5rem;
     margin: .1rem;
-    background-color: #0000FF;
+    background-color: #03045E;
 
 }
 #animationSection{
@@ -25,16 +28,58 @@ header {
     justify-content: space-between;
 }
 
+.algorithmDropdownButton{
+    background-color: #023E8A;
+    color: white;
+   
+}
+.algorithmDropdown{
+    padding-top: 1.5rem;
+    position:relative;
+    display:inline-block;
+}
+.algorithmDropdownSelections{
+    display:none;
+    position:absolute;
+    background-color: #90E0EF;
+    min-width: 4rem;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.algorithmDropdownSelections a{
+    color: black;
+    padding: .2rem;
+    display: block;
+    text-decoration: none;
+    display: block;
+}
+
+.algorithmDropdownSelections a:hover {
+    background-color: #CAF0F8;
+}
+
+.algorithmDropdown:hover .algorithmDropdownSelections{
+    display: block;
+}
+
+.algorithmDropdown:hover .algorithmDropdownButton{
+    background-color: #0096C7;
+}
+
 
 
 #binarySearchSection{
     display:flex;
-    -ms-flex-align: stretch;
 }
 
 #randomValueId{
     display: flex;
     flex-direction: row;
+}
+
+#randomValue{
+    padding-top: .2rem;
 }
 
 #elementIdSection{
@@ -44,10 +89,10 @@ header {
 
 #elementIdHover{
     display: flex;
-    padding-top: .3rem;
+    padding-top: .2rem;
 }
 
 body {
-    background-color: aliceblue;
+    background-color: whitesmoke;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
