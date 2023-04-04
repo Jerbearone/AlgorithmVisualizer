@@ -1,7 +1,7 @@
 import anime from './node_modules/animejs/lib/anime.es.js';
 
 //myAnimation = document.getElementById("algorithmAnimation");
-let itemNumber = 80;
+let itemNumber = 70;
 
 //the y value that will control downward movement in the animation
 let yTralsationValue = 0

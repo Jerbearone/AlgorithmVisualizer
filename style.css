@@ -28,6 +28,10 @@ header {
     justify-content: space-between;
 }
 
+#selectedAlgorithmText{
+    padding-left: 1rem;
+}
+
 .algorithmDropdownButton{
     background-color: #023E8A;
     color: white;
