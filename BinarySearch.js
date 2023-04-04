@@ -1,7 +1,7 @@
 import anime from './node_modules/animejs/lib/anime.es.js';
 
 //myAnimation = document.getElementById("algorithmAnimation");
-let itemNumber = 120;
+let itemNumber = 80;
 
 //the y value that will control downward movement in the animation
 let yTralsationValue = 0
@@ -24,7 +24,7 @@ let setupAnimation = function() {
 }
 
 let moveDown = function() {
-    yTralsationValue += 20;
+    addMoveDownValue();
     animator.add({
         targets: '.shape',
         translateY: yTralsationValue,
@@ -51,11 +51,11 @@ let getMiddleId = function() {
 
 let moveSingleShapeDown = function(IdOfElement) {
     console.log(IdOfElement);
-    yTralsationValue +=20
+    addMoveDownValue();
     animator.add({
         targets: (document.getElementById(IdOfElement)),
         translateY: yTralsationValue,
-        duration: 800
+        duration: 400
     })
 }
 
@@ -66,8 +66,12 @@ let compareSingleShape = function(IdOfElement) {
     animator.add({
         targets: (document.getElementById(IdOfElement)),
         translateY: yTralsationValue,
-        duration: 600
+        duration: 400
     })
+}
+
+let addMoveDownValue = function() {
+    yTralsationValue+=12
 }
 
 let getRandomNumber = function(min, max) {
@@ -100,7 +104,7 @@ let binarySearch = function() {
         middleIndex = (arrayLength +1) / 2;
     }
     moveSingleShapeDown(shapeArray[middleIndex].id)
-    yTralsationValue += 20
+    addMoveDownValue();
     while (matchFound == false) {
         if (randomNumber == middleIndex) {
             middleId = shapeArray[middleIndex].id
@@ -123,7 +127,7 @@ let binarySearch = function() {
             middleIndex = ((lowIndex + highIndex) / 2) ;
             //compareSingleShape(shapeArray[lowIndex].id);
             compareSingleShape(shapeArray[middleIndex].id);
-            yTralsationValue +=20
+            addMoveDownValue();
             console.log("random number greater than middle index: " + lowIndex + " " + middleIndex + " " + highIndex);
         }else if (randomNumber < middleIndex) {
             highIndex = middleIndex;
@@ -138,15 +142,16 @@ let binarySearch = function() {
             //compareSingleShape(shapeArray[highIndex].id);
             compareSingleShape(shapeArray[middleIndex].id);
             //make y value go down so you can visually see steps
-            yTralsationValue +=20
+            addMoveDownValue();
             console.log(" random number less than mid index: " + lowIndex + " " + middleIndex + " " + highIndex);
         }
  
     }
 }
 
-//create loop for user to see the algorithm work.
+
 window.onload = function() {
+    //create loop for user to see the algorithm work.
     for (let x = 0; x < itemNumber; x++) {
 
         //create a ton of shapes for the user
@@ -160,14 +165,11 @@ window.onload = function() {
             document.getElementById("elementIdHover").innerHTML = hoverId;
         })
         animationSection.appendChild(shape);
-        //load the intro animation
      
     }
 
     //Removes the original ("root") node. Now all nodes have functionality.
     document.getElementsByClassName('shape')[0].remove();
-
-    
     setupAnimation()
     binarySearch();
 }

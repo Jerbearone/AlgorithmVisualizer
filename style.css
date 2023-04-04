@@ -2,11 +2,10 @@ header {
     display:flex;
     align-items: center;
     justify-content: center;
-    margin: .5rem;
 }
 
 .shape{
-    height:.8rem;
+    height:.5rem;
     width:.8rem;
     margin: .1rem;
     background-color: #0000FF;
@@ -16,8 +15,14 @@ header {
     padding: 3rem;
     display:flex;
     flex-direction: row;
+}
 
-
+#algorithmSection{
+    padding-left: 2rem;
+    padding-right:2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 
@@ -44,4 +49,5 @@ header {
 
 body {
     background-color: aliceblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
