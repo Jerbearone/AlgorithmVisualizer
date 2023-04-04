@@ -1,8 +1,10 @@
 import anime from './node_modules/animejs/lib/anime.es.js';
 
 //myAnimation = document.getElementById("algorithmAnimation");
-let itemNumber = 70;
+let itemNumber = 100;
 
+//form for user to change amount of nodes for the algorithm
+let nodeInput = document.getElementById("numOfElementsForm");
 //the y value that will control downward movement in the animation
 let yTralsationValue = 0
 // the shape in the html file
@@ -10,15 +12,19 @@ let rootShape = document.querySelector('.shape');
 
 //TODO get an array of all the shape id's, so we can itterate through 
 
-let animator = anime.timeline({
-    duration: 300
-});
+let animator = null;
 
-let setupAnimation = function() {
+let startAnimator =  async function(){
+    animator = anime.timeline({
+        duration: 300
+    })
+}
+
+let setupAnimation = async function() {
     animator.add({
         targets: '.shape',
         translateX: 10,
-        duration: 1200,
+        duration: 400,
     });
     console.log(animator);
 }
@@ -61,7 +67,7 @@ let getRandomNumber = function(min, max) {
     return Math.floor(Math.random()*(max - min) + min);
 }
 
-let binarySearch = function() {
+let binarySearch = async function() {
     //get the array
     let shapeArray = document.getElementsByClassName('shape');
     //get a random element to search for
@@ -70,8 +76,9 @@ let binarySearch = function() {
     let randomNumber = getRandomNumber(0, itemNumber);
 
     //TODO add code to show the random ID
-    let randomId = shapeArray[randomNumber].id;
     console.log("random Id: " + shapeArray[randomNumber].id)
+
+    let randomId = shapeArray[randomNumber].id;
     document.getElementById("randomValue").innerHTML = randomId;
 
 
@@ -108,7 +115,6 @@ let binarySearch = function() {
                 highIndex -=1;
             }
             middleIndex = ((lowIndex + highIndex) / 2) ;
-            //bringShapeToCurrentYValue(shapeArray[lowIndex].id);
             bringShapeToCurrentYValue(shapeArray[middleIndex].id);
             addMoveDownValue();
             console.log("random number greater than middle index: " + lowIndex + " " + middleIndex + " " + highIndex);
@@ -128,14 +134,12 @@ let binarySearch = function() {
             addMoveDownValue();
             console.log(" random number less than mid index: " + lowIndex + " " + middleIndex + " " + highIndex);
         }
- 
     }
 }
 
-
-window.onload = function() {
-    //create loop for user to see the algorithm work.
-    for (let x = 0; x < itemNumber; x++) {
+let setupShapes = function() {
+       //create loop for user to see the algorithm work.
+       for (let x = 0; x < itemNumber; x++) {
 
         //create a ton of shapes for the user
         let shape = rootShape.cloneNode(true);
@@ -148,11 +152,48 @@ window.onload = function() {
             document.getElementById("elementIdHover").innerHTML = hoverId;
         })
         animationSection.appendChild(shape);
-     
     }
+}
 
+let changeShapeAmount = async function() {
+    let removableShape = document.getElementsByClassName('shape');
+    while(removableShape[0]) {
+        removableShape[0].parentNode.removeChild(removableShape[0]);
+    }
+}
+
+async function updateNodes() {
+    await changeShapeAmount();
+    setupShapes();
+    await startAnimator();
+    await setupAnimation();
+    await binarySearch();
+}
+window.onload = function() {
+    setupShapes();
     //Removes the original ("root") node. Now all nodes have functionality.
     document.getElementsByClassName('shape')[0].remove();
+
+    //add event listener to accept the users amount of nodes
+    nodeInput.addEventListener('submit', function() {
+        itemNumber =  parseInt(document.getElementById('numOfElementsForm')[0].value);
+        console.log(itemNumber);
+        yTralsationValue = 0;
+        if (itemNumber < 2) {
+            alert("please use more than one node");
+        }else if (itemNumber > 300 && itemNumber < 1000) {
+            alert("Please zoom out on your device to see the nodes moving");
+            updateNodes();
+
+        }else if (itemNumber > 1000) {
+            alert("to avoid performance issues, please don't create too many nodes.");
+
+        } else {
+            updateNodes();
+        }
+        
+    })
+    startAnimator();
     setupAnimation()
     binarySearch();
 }

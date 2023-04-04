@@ -35,10 +35,10 @@ header {
 .algorithmDropdownButton{
     background-color: #023E8A;
     color: white;
-   
+    
 }
 .algorithmDropdown{
-    padding-top: 1.5rem;
+    padding-top: 1.3rem;
     position:relative;
     display:inline-block;
 }
@@ -71,6 +71,15 @@ header {
     background-color: #0096C7;
 }
 
+
+#numOfElementsSection{
+    display: flex;
+    flex-direction: row;
+}
+
+#numOfElementsForm{
+    padding-top: 1rem;
+}
 
 
 #binarySearchSection{
